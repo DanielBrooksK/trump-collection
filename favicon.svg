@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" shape-rendering="crispEdges">
+  <!-- Navy background -->
+  <rect width="32" height="32" rx="4" fill="#0A1628"/>
+  <!-- Gold border -->
+  <rect x="1.5" y="1.5" width="29" height="29" rx="3" fill="none" stroke="#C9A132" stroke-width="1"/>
+  <!-- Gold top serif bar (full T crossbar) -->
+  <rect x="5" y="8" width="22" height="3" fill="#C9A132"/>
+  <!-- Small left serif -->
+  <rect x="5" y="8" width="5" height="1.5" fill="#9A7A24"/>
+  <!-- Small right serif -->
+  <rect x="22" y="8" width="5" height="1.5" fill="#9A7A24"/>
+  <!-- Vertical stroke of T -->
+  <rect x="13.5" y="11" width="5" height="13" fill="#C9A132"/>
+  <!-- Bottom serif of T -->
+  <rect x="11" y="22.5" width="10" height="2" fill="#C9A132"/>
+  <!-- Subtle gold star accent, top-right -->
+  <text x="26" y="8" font-size="5" fill="#C9A132" opacity="0.7" font-family="serif">★</text>
+</svg>
