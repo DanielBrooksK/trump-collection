@@ -1,0 +1,138 @@
+/* ============================================================
+   contact.css — Contact & Newsletter Page Styles
+   ============================================================ */
+
+.contact-page { min-height: 100vh; }
+
+/* ── Left Panel ──────────────────────────────────────────────── */
+.contact-info-panel {
+  padding: calc(var(--nav-height) + var(--space-4xl)) var(--space-2xl) var(--space-4xl);
+  background: var(--color-navy);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-info-panel::before {
+  content: '★';
+  position: absolute;
+  right: -30px;
+  bottom: 40px;
+  font-size: 16rem;
+  color: var(--color-gold);
+  opacity: 0.04;
+  user-select: none;
+  pointer-events: none;
+}
+
+.contact-panel-eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-md);
+}
+
+.contact-panel-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  line-height: 1.15;
+  margin-bottom: var(--space-md);
+}
+
+.contact-panel-tagline {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--text-lg);
+  color: rgba(255,255,255,0.65);
+  margin-bottom: var(--space-2xl);
+  line-height: 1.7;
+}
+
+.contact-panel-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--gradient-gold);
+  margin-bottom: var(--space-2xl);
+}
+
+.contact-detail { display: flex; flex-direction: column; gap: var(--space-md); margin-bottom: var(--space-2xl); }
+
+.contact-detail-item { display: flex; flex-direction: column; gap: var(--space-xs); }
+
+.contact-detail-label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.contact-detail-value { font-family: var(--font-body); font-size: var(--text-base); color: rgba(255,255,255,0.75); }
+.contact-detail-value a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color var(--transition-fast); }
+.contact-detail-value a:hover { color: var(--color-gold); }
+
+.contact-eagle { font-size: 2.5rem; margin-bottom: var(--space-xl); display: block; }
+
+/* ── Right Panel ─────────────────────────────────────────────── */
+.contact-form-panel {
+  padding: calc(var(--nav-height) + var(--space-4xl)) var(--space-2xl) var(--space-4xl);
+  background: var(--color-off-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-form-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-navy);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid rgba(10,22,40,0.15);
+}
+
+.contact-form-panel .form-label { color: var(--color-navy); }
+
+.contact-form-panel .form-input,
+.contact-form-panel .form-textarea,
+.contact-form-panel .form-select {
+  background: var(--color-white);
+  border-color: rgba(10,22,40,0.2);
+  color: var(--color-text);
+}
+
+.contact-form-panel .form-input::placeholder,
+.contact-form-panel .form-textarea::placeholder { color: var(--color-text-muted); }
+
+.contact-form-panel .form-input:focus,
+.contact-form-panel .form-textarea:focus,
+.contact-form-panel .form-select:focus { border-color: var(--color-gold-dark); background: var(--color-white); }
+
+.contact-form-panel .form-select {
+  background-color: var(--color-white);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath fill='%239A7A24' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1em center;
+}
+
+.contact-form-panel .form-select option { background: var(--color-white); color: var(--color-text); }
+.contact-form-panel .form-checkbox-label { color: var(--color-text-muted); }
+
+.form-row { display: grid; grid-template-columns: 1fr; }
+
+@media (min-width: 768px) { .form-row { grid-template-columns: 1fr 1fr; gap: 0 var(--space-lg); } }
+
+.contact-form-panel .success-message .success-title { color: var(--color-gold-dark); }
+.contact-form-panel .success-message .success-text  { color: var(--color-text); }

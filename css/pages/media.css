@@ -1,0 +1,139 @@
+/* ============================================================
+   media.css — Quotes & Defining Moments Page Styles
+   ============================================================ */
+
+.media-subsection {
+  padding: var(--space-4xl) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.media-subsection:last-child { border-bottom: none; }
+
+.media-section-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+/* ── Masonry Quotes Grid ─────────────────────────────────────── */
+.quotes-grid {
+  columns: 1;
+  column-gap: var(--space-xl);
+}
+
+@media (min-width: 768px)  { .quotes-grid { columns: 2; } }
+@media (min-width: 1024px) { .quotes-grid { columns: 3; } }
+
+.quotes-grid .quote-card {
+  break-inside: avoid;
+  margin-bottom: var(--space-xl);
+}
+
+/* ── Policy Feature Cards ────────────────────────────────────── */
+.policy-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .policy-cards-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.policy-card {
+  background: var(--color-navy-mid);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.policy-card-img {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.policy-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.policy-card:hover .policy-card-img img { transform: scale(1.05); }
+
+.policy-card-body { padding: var(--space-xl); }
+
+.policy-card-date {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+
+.policy-card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: var(--space-md);
+  line-height: 1.25;
+}
+
+.policy-card-text {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: rgba(255,255,255,0.72);
+  line-height: 1.75;
+}
+
+/* ── Quote Timeline Strip ────────────────────────────────────── */
+.quote-timeline-strip {
+  display: flex;
+  gap: var(--space-xl);
+  overflow-x: auto;
+  padding-bottom: var(--space-lg);
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.quote-timeline-strip::-webkit-scrollbar { height: 4px; }
+.quote-timeline-strip::-webkit-scrollbar-track { background: var(--color-navy-mid); border-radius: var(--radius-full); }
+.quote-timeline-strip::-webkit-scrollbar-thumb { background: var(--color-gold-dark); border-radius: var(--radius-full); }
+
+.qt-item {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  background: var(--color-navy-mid);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-gold);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+
+.qt-year {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-gold);
+  margin-bottom: var(--space-xs);
+}
+
+.qt-area {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: var(--space-lg);
+}
+
+.qt-quote {
+  font-family: var(--font-headline);
+  font-style: italic;
+  font-size: var(--text-base);
+  color: var(--color-white);
+  line-height: 1.65;
+}

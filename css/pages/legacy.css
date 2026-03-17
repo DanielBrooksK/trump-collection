@@ -1,0 +1,87 @@
+/* ============================================================
+   legacy.css — Presidential Legacy Page Styles
+   ============================================================ */
+
+.legacy-intro {
+  max-width: 800px;
+  margin-inline: auto;
+  text-align: center;
+  padding: var(--space-3xl) 0;
+}
+
+.legacy-intro p {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: rgba(255,255,255,0.82);
+  line-height: 1.8;
+}
+
+/* ── Category Sections ───────────────────────────────────────── */
+.legacy-category {
+  padding: var(--space-4xl) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.legacy-category:last-child {
+  border-bottom: none;
+}
+
+.legacy-category-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+}
+
+@media (min-width: 1024px) {
+  .legacy-category-inner {
+    grid-template-columns: 280px 1fr;
+    align-items: start;
+  }
+}
+
+.legacy-category-label {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-xl));
+}
+
+.legacy-category-body p {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  color: rgba(255,255,255,0.78);
+  line-height: 1.85;
+  margin-bottom: var(--space-lg);
+}
+
+/* ── Achievement List ────────────────────────────────────────── */
+.achievement-list {
+  margin-top: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.achievement-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+  padding: var(--space-md) var(--space-lg);
+  background: rgba(201,161,50,0.06);
+  border-left: 2px solid var(--color-gold-dark);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.achievement-list li::before {
+  content: '★';
+  color: var(--color-gold);
+  font-size: 0.65rem;
+  flex-shrink: 0;
+  margin-top: 0.25em;
+}
+
+.legacy-category:nth-child(even) {
+  background: rgba(27, 43, 75, 0.3);
+}

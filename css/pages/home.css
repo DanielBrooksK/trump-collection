@@ -1,0 +1,234 @@
+/* ============================================================
+   home.css — Homepage Specific Styles
+   ============================================================ */
+
+/* ── Hero ────────────────────────────────────────────────────── */
+.hero-eyebrow {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-lg);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  line-height: 1.0;
+  margin-bottom: var(--space-lg);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+  font-family: var(--font-headline);
+  font-style: italic;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  color: var(--color-gold);
+  margin-bottom: var(--space-md);
+  line-height: 1.35;
+}
+
+.hero-description {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: rgba(255,255,255,0.8);
+  margin-bottom: var(--space-2xl);
+  max-width: 540px;
+  margin-inline: auto;
+  line-height: 1.7;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Falling Stars ───────────────────────────────────────────── */
+.hero-stars {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.star-particle {
+  position: absolute;
+  top: -20px;
+  font-size: 0.7rem;
+  color: var(--color-gold);
+  opacity: 0;
+  animation: starFall linear infinite;
+}
+
+.star-particle:nth-child(1)  { left:  5%; animation-duration: 8s;   animation-delay: 0s;   font-size: 0.5rem; }
+.star-particle:nth-child(2)  { left: 12%; animation-duration: 11s;  animation-delay: 2s;   }
+.star-particle:nth-child(3)  { left: 22%; animation-duration: 9s;   animation-delay: 4s;   font-size: 0.6rem; }
+.star-particle:nth-child(4)  { left: 35%; animation-duration: 13s;  animation-delay: 1s;   font-size: 0.4rem; }
+.star-particle:nth-child(5)  { left: 48%; animation-duration: 10s;  animation-delay: 6s;   }
+.star-particle:nth-child(6)  { left: 60%; animation-duration: 7s;   animation-delay: 3s;   font-size: 0.5rem; }
+.star-particle:nth-child(7)  { left: 72%; animation-duration: 12s;  animation-delay: 5s;   font-size: 0.65rem; }
+.star-particle:nth-child(8)  { left: 82%; animation-duration: 9.5s; animation-delay: 0.5s; font-size: 0.45rem; }
+.star-particle:nth-child(9)  { left: 90%; animation-duration: 11s;  animation-delay: 7s;   }
+.star-particle:nth-child(10) { left: 97%; animation-duration: 8.5s; animation-delay: 2.5s; font-size: 0.55rem; }
+
+@keyframes starFall {
+  0%   { top: -20px; opacity: 0; transform: translateX(0) rotate(0deg); }
+  10%  { opacity: 0.5; }
+  85%  { opacity: 0.3; }
+  100% { top: 110vh; opacity: 0; transform: translateX(30px) rotate(180deg); }
+}
+
+/* ── Stats Bar ───────────────────────────────────────────────── */
+.stats-bar {
+  background: var(--color-navy-mid);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.stats-bar .grid-stats {
+  border-left: 1px solid var(--color-border);
+}
+
+.stats-bar .stat-tile {
+  border-right: 1px solid var(--color-border);
+  padding: var(--space-2xl) var(--space-xl);
+}
+
+@media (max-width: 767px) {
+  .stats-bar .stat-tile {
+    border-bottom: 1px solid var(--color-border);
+  }
+  .stats-bar .grid-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Legacy Cards ────────────────────────────────────────────── */
+.legacy-cards-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+/* ── Home Quote ──────────────────────────────────────────────── */
+.home-quote-section {
+  background: var(--color-navy-mid);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-quote-section::after {
+  content: '★';
+  position: absolute;
+  right: 5%;
+  bottom: -20px;
+  font-size: 12rem;
+  color: var(--color-gold);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+}
+
+.home-quote-section::before {
+  content: '★';
+  position: absolute;
+  left: 3%;
+  top: -20px;
+  font-size: 10rem;
+  color: var(--color-gold);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Timeline Preview ────────────────────────────────────────── */
+.timeline-preview-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-2xl);
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.timeline-preview-list {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.timeline-preview-list .milestone-mini {
+  padding: var(--space-xl) var(--space-2xl);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-navy-mid);
+}
+
+.timeline-preview-list .milestone-mini:last-child {
+  border-bottom: none;
+}
+
+/* ── Collection Preview ──────────────────────────────────────── */
+.collection-preview-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.collection-preview-section .section-title {
+  color: var(--color-navy);
+}
+
+.collection-preview-section .section-eyebrow {
+  color: var(--color-gold-dark);
+}
+
+.collection-card { min-height: 380px; }
+
+/* ── Newsletter ──────────────────────────────────────────────── */
+.newsletter-section {
+  background: var(--color-navy-mid);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.newsletter-inner {
+  max-width: 600px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.newsletter-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: var(--space-md);
+}
+
+.newsletter-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: rgba(255,255,255,0.7);
+  margin-bottom: var(--space-2xl);
+  line-height: 1.7;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.newsletter-form .form-input {
+  flex: 1;
+  min-width: 220px;
+}
