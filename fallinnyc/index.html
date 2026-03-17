@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Fall in New York City — Trump Collection's guide to experiencing the season's beauty in the greatest city in the world." />
+  <title>Fall in New York City | Trump Collection</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+
+  <style>
+    .fall-hero {
+      position: relative;
+      min-height: 65vh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: var(--nav-height);
+    }
+    .fall-hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .fall-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+    .fall-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.95) 0%, rgba(10,22,40,0.35) 60%, rgba(10,22,40,0.15) 100%);
+    }
+    .fall-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: var(--space-5xl) var(--space-xl) var(--space-4xl);
+      width: 100%;
+    }
+    /* Sight card */
+    .sight-card {
+      background: var(--color-navy-mid);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+    }
+    .sight-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-gold);
+      border-color: var(--color-gold);
+    }
+    .sight-card-img {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+    }
+    .sight-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+    .sight-card:hover .sight-card-img img {
+      transform: scale(1.05);
+    }
+    .sight-card-body { padding: var(--space-xl); }
+    .sight-card-number {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      color: var(--color-gold);
+      opacity: 0.35;
+      line-height: 1;
+      margin-bottom: var(--space-sm);
+    }
+    .sight-card-name {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-white);
+      margin-bottom: var(--space-sm);
+      line-height: 1.25;
+    }
+    .sight-card-subtitle {
+      font-family: var(--font-headline);
+      font-style: italic;
+      font-size: var(--text-base);
+      color: var(--color-gold);
+      margin-bottom: var(--space-md);
+    }
+    .sight-card-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+    }
+    .fall-tip {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: var(--space-md);
+      background: rgba(201,161,50,0.06);
+      border-left: 2px solid var(--color-gold-dark);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.7);
+      margin-top: var(--space-md);
+    }
+    .fall-tip::before {
+      content: '★';
+      color: var(--color-gold);
+      font-size: .6rem;
+      flex-shrink: 0;
+      margin-top: .18em;
+    }
+    .fall-intro {
+      max-width: 800px;
+      margin-inline: auto;
+      text-align: center;
+      margin-bottom: var(--space-4xl);
+    }
+    .fall-intro p {
+      font-family: var(--font-body);
+      font-size: var(--text-lg);
+      color: rgba(255,255,255,0.8);
+      line-height: 1.85;
+    }
+    /* Featured property strip */
+    .property-strip {
+      background: var(--color-navy-mid);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      display: grid;
+      grid-template-columns: 1fr;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .property-strip { grid-template-columns: 1fr 1fr; }
+    }
+    .property-strip-img {
+      min-height: 300px;
+      overflow: hidden;
+    }
+    .property-strip-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .property-strip-content {
+      padding: var(--space-2xl) var(--space-2xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .property-strip-eyebrow {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: var(--space-sm);
+    }
+    .property-strip-title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-white);
+      margin-bottom: var(--space-md);
+      line-height: 1.15;
+    }
+    .property-strip-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-md);
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+      margin-bottom: var(--space-xl);
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-wordmark">TRUMP COLLECTION</a>
+    <ul class="nav-links" role="list">
+      <li><a href="/"            class="nav-link">Home</a></li>
+      <li><a href="/legacy"      class="nav-link">Legacy</a></li>
+      <li><a href="/timeline"    class="nav-link">Timeline</a></li>
+      <li><a href="/collection"  class="nav-link">Collection</a></li>
+      <li><a href="/media"       class="nav-link">Media</a></li>
+      <li><a href="/contact"     class="nav-link">Contact</a></li>
+    </ul>
+    <a href="/contact" class="btn btn-outline btn-sm nav-cta">Subscribe</a>
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile-overlay" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+  <nav>
+    <ul style="display:flex;flex-direction:column;align-items:center;gap:2rem;list-style:none;" role="list">
+      <li><a href="/"           class="mobile-nav-link">Home</a></li>
+      <li><a href="/legacy"     class="mobile-nav-link">Legacy</a></li>
+      <li><a href="/timeline"   class="mobile-nav-link">Timeline</a></li>
+      <li><a href="/collection" class="mobile-nav-link">Collection</a></li>
+      <li><a href="/media"      class="mobile-nav-link">Media</a></li>
+      <li><a href="/contact"    class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div style="margin-top:2.5rem;text-align:center;">
+      <a href="/contact" class="btn btn-outline">Subscribe</a>
+    </div>
+  </nav>
+</div>
+
+<!-- HERO -->
+<header class="fall-hero">
+  <div class="fall-hero-bg">
+    <img src="https://images.unsplash.com/photo-1500916434205-0c77489c6cf7?w=1600&auto=format&fit=crop&q=80"
+         alt="Central Park in autumn with golden foliage and the New York City skyline in the background" />
+  </div>
+  <div class="fall-hero-overlay"></div>
+  <div class="fall-hero-content">
+    <span class="section-eyebrow" style="font-size:.7rem;letter-spacing:.3em;">New York City &nbsp;·&nbsp; Autumn</span>
+    <h1 style="font-family:var(--font-display);font-size:clamp(2.75rem,7vw,5.5rem);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--color-white);line-height:1.0;margin-bottom:var(--space-md);">Fall in<br>New York City</h1>
+    <p style="font-family:var(--font-headline);font-style:italic;font-size:clamp(1.125rem,2.5vw,1.5rem);color:var(--color-gold);">There is nothing like it anywhere on earth.</p>
+  </div>
+</header>
+
+<main>
+
+<!-- INTRO -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="fall-intro reveal">
+      <p>New York City in autumn is incomparable. The skyline framed by golden canopies, the crisp air carrying the energy of eight million lives in motion, the city's great parks transformed into cathedrals of amber and rust. Trump Collection properties place you at the heart of it all.</p>
+      <p>Here is where Trump Collection recommends you take in the season's beauty — a curated guide to the finest fall sights and experiences in the greatest city in the world.</p>
+    </div>
+
+    <!-- SIGHTS GRID -->
+    <div class="grid-3 reveal-stagger">
+
+      <!-- 1 Central Park -->
+      <article class="sight-card">
+        <div class="sight-card-img">
+          <img src="https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?w=700&auto=format&fit=crop&q=80"
+               alt="Central Park in autumn with golden orange foliage reflected in a still lake" />
+        </div>
+        <div class="sight-card-body">
+          <div class="sight-card-number">01</div>
+          <div class="sight-card-name">Central Park</div>
+          <div class="sight-card-subtitle">The Crown Jewel of Autumn</div>
+          <p class="sight-card-desc">843 acres of fall perfection. The Mall's elm canopy turns a hundred shades of gold; the Reservoir reflects the copper foliage of the Great Lawn; Bethesda Terrace offers a panorama that no painting has ever captured adequately. Walk from south to north as the season deepens — a different city reveals itself every week of October and November.</p>
+          <div class="fall-tip">Best Viewed From: Trump International Hotel &amp; Tower at Columbus Circle — step directly into the park's southwest corner at first light.</div>
+        </div>
+      </article>
+
+      <!-- 2 Upper West Side -->
+      <article class="sight-card">
+        <div class="sight-card-img">
+          <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=700&auto=format&fit=crop&q=80"
+               alt="New York City brownstone neighborhood with autumn trees lining the street" />
+        </div>
+        <div class="sight-card-body">
+          <div class="sight-card-number">02</div>
+          <div class="sight-card-name">The Upper West Side</div>
+          <div class="sight-card-subtitle">New York's Most Civilized Neighborhood</div>
+          <p class="sight-card-desc">Brownstone-lined streets, the American Museum of Natural History, Riverside Park along the Hudson — the Upper West Side in fall is the city at its most livable. Columbus Avenue and Amsterdam Avenue offer world-class dining and boutique shopping as the leaves of the side streets turn golden overhead.</p>
+          <div class="fall-tip">Best Explored: On foot from Columbus Circle north to the 79th Street Boat Basin — allow a full afternoon.</div>
+        </div>
+      </article>
+
+      <!-- 3 The High Line -->
+      <article class="sight-card">
+        <div class="sight-card-img">
+          <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=700&auto=format&fit=crop&q=80"
+               alt="The High Line elevated park with autumn plantings and Manhattan skyline views" />
+        </div>
+        <div class="sight-card-body">
+          <div class="sight-card-number">03</div>
+          <div class="sight-card-name">The High Line</div>
+          <div class="sight-card-subtitle">The City from Above</div>
+          <p class="sight-card-desc">The High Line's wild grasses and native plantings take on extraordinary beauty in fall — rust, umber, and bronze against the steel geometry of the West Chelsea skyline. The promenade offers unique elevated views of the Hudson River and the architecture of one of the city's most dynamic neighborhoods.</p>
+          <div class="fall-tip">Best Time: Late afternoon in October — the Hudson turns copper as the sun descends toward New Jersey.</div>
+        </div>
+      </article>
+
+      <!-- 4 Museum Mile -->
+      <article class="sight-card">
+        <div class="sight-card-img">
+          <img src="https://images.unsplash.com/photo-1575223970966-76ae61ee7838?w=700&auto=format&fit=crop&q=80"
+               alt="The Metropolitan Museum of Art facade with autumn trees along Fifth Avenue" />
+        </div>
+        <div class="sight-card-body">
+          <div class="sight-card-number">04</div>
+          <div class="sight-card-name">Museum Mile &amp; Fifth Avenue</div>
+          <div class="sight-card-subtitle">Culture on the Edge of the Park</div>
+          <p class="sight-card-desc">Fifth Avenue's park-side promenade is New York's most magnificent fall walk — the Metropolitan Museum on one side, Central Park's golden canopy on the other. Museum Mile concentrates more cultural wealth per block than anywhere on earth. Fall brings special exhibitions and the city's most sophisticated dining scene into its finest season.</p>
+          <div class="fall-tip">Timing: The Met opens at 10am. Arrive early on a Tuesday or Wednesday for near-solitary access to the European galleries in fall light.</div>
+        </div>
+      </article>
+
+      <!-- 5 Brooklyn Bridge Park -->
+      <article class="sight-card">
+        <div class="sight-card-img">
+          <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=700&auto=format&fit=crop&q=80"
+               alt="Brooklyn Bridge with Manhattan skyline view on a clear autumn day" />
+        </div>
+        <div class="sight-card-body">
+          <div class="sight-card-number">05</div>
+          <div class="sight-card-name">Brooklyn Bridge &amp; DUMBO</div>
+          <div class="sight-card-subtitle">Manhattan from the Outside</div>
+          <p class="sight-card-desc">The walk across the Brooklyn Bridge in fall delivers the most dramatic skyline view the city offers. The cobblestoned streets of DUMBO below, framed by the bridge's steel cables, are among the most photographed scenes in American urban life — and in October's golden afternoon light, they are extraordinary.</p>
+          <div class="fall-tip">Walk the bridge at 7am on a clear November morning — the skyline in crisp fall air is unmatched.</div>
+        </div>
+      </article>
+
+      <!-- 6 Rockefeller Center -->
+      <article class="sight-card">
+        <div class="sight-card-img">
+          <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?w=700&auto=format&fit=crop&q=80"
+               alt="Rockefeller Center ice rink and Christmas tree in midtown Manhattan at dusk" />
+        </div>
+        <div class="sight-card-body">
+          <div class="sight-card-number">06</div>
+          <div class="sight-card-name">Midtown &amp; Rockefeller Center</div>
+          <div class="sight-card-subtitle">The City at Its Most Iconic</div>
+          <p class="sight-card-desc">As fall deepens into November, Midtown's transformation into the holiday season begins. The Rockefeller Center tree arrives and the ice rink opens, the flags of Fifth Avenue give way to holiday banners, and the city's legendary energy surges. There is no moment in New York City's calendar that rivals this transition.</p>
+          <div class="fall-tip">The week before Thanksgiving is the finest time to experience Midtown — festive, energized, and not yet overwhelmed by peak season crowds.</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROPERTY -->
+<section class="section section-mid">
+  <div class="container reveal">
+    <div class="property-strip">
+      <div class="property-strip-img">
+        <img src="https://images.unsplash.com/photo-1448906654166-444d494666b3?w=800&auto=format&fit=crop&q=80"
+             alt="Central Park in autumn from above with golden foliage beside the New York skyline" />
+      </div>
+      <div class="property-strip-content">
+        <div class="property-strip-eyebrow">Your Base for the Season</div>
+        <div class="property-strip-title">Trump International Hotel &amp; Tower, New York</div>
+        <p class="property-strip-desc">Positioned at One Central Park West — the finest address in New York City — Trump International Hotel &amp; Tower places you at the entrance to Central Park. Step outside and you are immediately in the heart of New York's greatest fall experience. Forbes Five-Star rated, with Jean-Georges restaurant on the ground floor and the city's best at your door.</p>
+        <a href="/collection" class="btn btn-outline">Explore the Property</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="section section-dark">
+  <div class="container">
+    <span class="gold-rule"></span>
+    <div class="quote-block reveal">
+      <span class="quote-mark" aria-hidden="true">"</span>
+      <blockquote>
+        There is nothing like fall in New York City. The energy, the beauty, the ambition of the place — it is all on full display when the leaves turn. There is nowhere else I would rather be.
+      </blockquote>
+      <p class="quote-attribution">— Trump Collection</p>
+    </div>
+    <span class="gold-rule"></span>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section-mid">
+  <div class="container text-center reveal">
+    <span class="section-eyebrow">Plan Your New York Visit</span>
+    <h2 class="section-title centered">Experience the Season in Full</h2>
+    <p style="font-family:var(--font-body);font-size:var(--text-lg);color:rgba(255,255,255,0.72);max-width:560px;margin:0 auto var(--space-2xl);">Our team is ready to arrange every detail of your New York autumn stay — from suites to dining reservations to private park tours.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="/collection#hotels" class="btn btn-primary btn-lg">Book Your Stay</a>
+      <a href="/contact"           class="btn btn-outline btn-lg">Contact Concierge</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container footer-inner">
+    <div class="footer-wordmark">
+      <div class="footer-wordmark-text">TRUMP COLLECTION</div>
+      <div class="footer-wordmark-sub">The Official Archive &amp; Showcase</div>
+    </div>
+    <div class="footer-rule"></div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <div class="footer-col-title">Site Links</div>
+        <ul role="list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/legacy">Presidential Legacy</a></li>
+          <li><a href="/timeline">Timeline of History</a></li>
+          <li><a href="/collection">The Collection</a></li>
+          <li><a href="/media">Words &amp; Moments</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Discover</div>
+        <ul role="list">
+          <li><a href="/springsights">Spring Sights</a></li>
+          <li><a href="/giftguide">Holiday Gift Guide</a></li>
+          <li><a href="/fallinnyc">Fall in New York City</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <ul role="list">
+          <li><a href="/contact">Press Inquiries</a></li>
+          <li><a href="/contact">Partnership Requests</a></li>
+          <li><a href="/contact">Newsletter Signup</a></li>
+        </ul>
+        <div class="social-links" style="margin-top:1rem;">
+          <a href="#" class="social-link" aria-label="Truth Social">TS</a>
+          <a href="#" class="social-link" aria-label="X / Twitter">X</a>
+          <a href="#" class="social-link" aria-label="Instagram">IG</a>
+          <a href="#" class="social-link" aria-label="Facebook">FB</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; 2025 Trump Collection. All Rights Reserved.</p>
+      <div class="footer-legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+</body>
+</html>
