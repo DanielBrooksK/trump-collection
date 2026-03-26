@@ -689,8 +689,9 @@
 }
 
 .category-icon-block .cib-icon {
-  font-size: 2.5rem;
-  line-height: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
 }
 
 .category-icon-block .cib-label {

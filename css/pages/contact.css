@@ -80,7 +80,7 @@
 .contact-detail-value a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color var(--transition-fast); }
 .contact-detail-value a:hover { color: var(--color-gold); }
 
-.contact-eagle { font-size: 2.5rem; margin-bottom: var(--space-xl); display: block; }
+.contact-eagle { width: 3rem; height: 3rem; margin-bottom: var(--space-xl); display: block; }
 
 /* ── Right Panel ─────────────────────────────────────────────── */
 .contact-form-panel {
