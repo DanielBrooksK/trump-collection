@@ -192,6 +192,41 @@
 
 .collection-card { min-height: 380px; }
 
+/* ── In the News Feature ─────────────────────────────────────── */
+.news-feature-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .news-feature-inner {
+    grid-template-columns: 1.15fr 1fr;
+    gap: var(--space-4xl);
+  }
+}
+
+.news-feature-image img {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius-md);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,161,50,0.18);
+}
+
+.news-feature-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.news-feature-body {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  color: rgba(255,255,255,0.78);
+  line-height: 1.85;
+}
+
 /* ── Newsletter ──────────────────────────────────────────────── */
 .newsletter-section {
   background: var(--color-navy-mid);
